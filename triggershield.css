@@ -1,0 +1,8 @@
+img[data-triggershield="true"]::after {
+  content: "🔒 Blurred by TriggerShield";
+  position: absolute;
+  background-color: black;
+  color: white;
+  padding: 2px;
+  font-size: 10px;
+}
