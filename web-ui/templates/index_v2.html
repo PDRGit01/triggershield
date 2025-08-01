@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TriggerShield – Intelligent Image Filter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- 🔷 TITLE SECTION -->
+<section class="bg-dark text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4">TriggerShield</h1>
+        <p class="lead">Shielding your mind, one image at a time.</p>
+    </div>
+</section>
+
+<hr class="my-0" />
+
+<!-- 🔶 PURPOSE SECTION -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="mb-4">🔍 What is TriggerShield?</h2>
+        <p>
+            TriggerShield is a powerful image classification engine that identifies potentially triggering visuals 
+            like cupcakes, pineapples, or other sensitive content. Perfect for use in browsers, accessibility tools, 
+            and content moderation systems.
+        </p>
+    </div>
+</section>
+
+<hr class="my-0" />
+
+<!-- 🔸 HOW IT WORKS SECTION -->
+<section class="py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <h2 class="mb-4">⚙️ How It Works</h2>
+        <p>Upload an image, and our model will instantly analyze and identify if it's a known trigger category.</p>
+        <div class="text-center">
+            <img src="{{ url_for('static', filename='demo_blur.gif') }}" class="img-fluid round.Demo GIF)</p>
+        </div>
+    </div>
+</section>
+
+<hr class="my-0" />
+
+<!-- 🧪 TEST THE MODEL SECTION -->
+<section class="bg-white py-5">
+    <div class="container">
+        <h2 class="mb-4">🧪 Test TriggerShield Model</h2>
+        <form action="/predict" method="post" enctype="multipart/form-data" class="mb-4">
+            <div class="mb-3">
+                <label for="file" class="form-label">Choose image(s) to test (up to 3):</label>
+                <input class="form-control" type="file" id="file" name="file" accept="image/*" multiple required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+
+        {% if predictions %}
+            <h5>Predictions:</h5>
+            <ul class="list-group">
+                {% for prediction in predictions %}
+                <li class="list-group-item">{{ prediction }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</section>
+
+<hr class="my-0" />
+
+<!-- 🔚 FOOTER SECTION -->
+<footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0">© 2025 TriggerShield | <a href="#" class="text-white text-decoration-underline">Contact Us</a> | <a href="#" class="text-white text-decoration-underline">About</a></p>
+</footer>
+
+</body>
+</html>
